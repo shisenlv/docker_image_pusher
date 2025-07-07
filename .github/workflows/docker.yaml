@@ -7,10 +7,10 @@ on:
 
 
 env:
-  ALIYUN_REGISTRY: "${{ secrets.REGISTRY }}"
-  ALIYUN_NAME_SPACE: "${{ secrets.NAME_SPACE }}"
-  ALIYUN_REGISTRY_USER: "${{ secrets.REGISTRY_USER }}"
-  ALIYUN_REGISTRY_PASSWORD: "${{ secrets.REGISTRY_PASSWORD }}"
+  REGISTRY: "${{ secrets.REGISTRY }}"
+  NAME_SPACE: "${{ secrets.NAME_SPACE }}"
+  REGISTRY_USER: "${{ secrets.REGISTRY_USER }}"
+  REGISTRY_PASSWORD: "${{ secrets.REGISTRY_PASSWORD }}"
 
 jobs:
 
@@ -55,7 +55,7 @@ jobs:
     - name: Docker Setup Buildx
       uses: docker/setup-buildx-action@v3
 
-    - name: Build and push image Aliyun
+    - name: Build and push image
       run: |
         docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
         # 数据预处理,判断镜像是否重名
